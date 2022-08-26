@@ -96,7 +96,7 @@ print("scalar_loss:      ", example_batch_loss.numpy().mean())
 model.compile(optimizer='adam', loss=loss)
 
 # Directory where the checkpoints will be saved
-checkpoint_dir = 'C:/Users/waiku/Desktop/Python/Projects/CourseraTF/Avatar/Checkpoints'
+checkpoint_dir = 'Checkpoints'
 # Name of the checkpoint files
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
 
@@ -105,7 +105,7 @@ checkpoint_callback=tf.keras.callbacks.ModelCheckpoint(
     save_weights_only=True)
 
 EPOCHS=30
-#history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
+history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
 tf.train.latest_checkpoint(checkpoint_dir)
 model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
 
